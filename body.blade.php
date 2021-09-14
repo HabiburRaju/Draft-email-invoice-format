@@ -1,56 +1,67 @@
-{{-- Pdf Body --}}
+{{-- Mail Body --}}
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        #mailBody {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        #mailBody td, #mailBody th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+    </style>
 </head>
 <body>
-    <h1 style="text-align:center">Invoice</h1>
-    <h1 style="text-align: center"><img src="https://logovtor.com/wp-content/uploads/2020/08/banglalink-logo-vector.png" alt="[Banglalink Logo]" width="400" height="200"></h1>
-    {{-- https://logovtor.com/wp-content/uploads/2020/08/banglalink-logo-vector.png --}}
-    {{-- {{asset('storage/bl.png')}} --}}
-    <h3 style="text-align:center">Invoice ID : {{$attach_details['invoice_id']}}</h3>
-    <div style="margin-left: 100px; margin-right:100px">
-        <p style="font-size: 14px">
-            <span>Banglalink</span><br>
-            <span>Address:{{$attach_details['address']}}</span><br>
-            <span>Date:{{$attach_details['date']}}</span><br>
-        </p>
-        <p style="font-size: 14px">
-            <span>Customer Info:{{$attach_details['customer_info']}}</span><br>
-            <span>Phone Number:{{$attach_details['phone_number']}}</span><br>
-            <span>Email Address:{{$attach_details['email_address']}}</span><br>
-        </p>
-        <p style="font-size: 14px">
-            <span>Invoice ID:{{$attach_details['invoice_id']}}</span><br>
-            <span>Order ID:{{$attach_details['order_id']}}</span><br>
-        </p>
-       
-        {{-- <div style=" display: inline-block; justify-content:space-between" >
-            <h5 >SItems Ordered:</h5> 
-            <h5 >Price</h5> 
-        </div> --}}
-        <h5 align="left">SItems Ordered:</h5> 
-        <h5 align="right">Price</h5> 
-
-        <h5 align="left">Mobile Recharge : </h5>
-        <h5 align="right">{{$attach_details['mobile_recharge']}}</h5>
-        <hr/>
-        <h5 style="text-align:right">Sub Total : {{$attach_details['sub_total']}}</h5> 
-        <h5 style="text-align:right">Discount : {{$attach_details['discount']}}</h5> 
-        <h5 style="text-align:right">Total : {{$attach_details['total']}}</h5> 
-
-        <p style="font-size: 12px">
-            <b style="font-size: 14px">Payment Details:</b> <br>
-            Transaction Type: Online Purchase <br>
-            Card Type: bKash/Card <br>
-            Bank TXN ID <br>
-            Card Issuer Bank: <br>
-            Issuer Bank Address: Bangladesh <br>
-        </p>
-    </div>
+    <h3>Dear , {{$details['name']}}</h3><br>
+    <p>Your request for recharge/payment has been processed successfully. The details of your transaction request are as follows</p><br>
+    <h4>ORDER DETAILS</h4><br>
+    <table id="mailBody">
+        <tr>
+            <th>Product Type</th>
+            <th>['topup']</th>
+        </tr>
+        <tr>
+            <td>Customer MSISSDN</td>
+            <td>{{$details['customer_msissdn']}}</td>
+        </tr>
+        <tr>
+            <td>Paid Amount	</td>
+            <td>{{$details['paid_amount']}}</td>
+        </tr>
+        <tr>
+            <td>Discount Amount	</td>
+            <td>{{$details['discount_amount']}}</td>
+        </tr>
+        <tr>
+            <td>Recharge Amount	</td>
+            <td>{{$details['recharge_amount']}}</td>
+        </tr>
+        <tr>
+            <td>Transaction ID</td>
+            <td>{{$details['transaction_id']}}</td>
+        </tr>
+        <tr>
+            <td>Card Type</td>
+            <td>{{$details['card_type']}}</td>
+        </tr>
+        <tr>
+            <td>Card No</td>
+            <td>{{$details['Card_no']}}</td>
+        </tr>
+    </table>
+    <h3>Thank you, <br>MyBL Inventory Team</h3>
+    <h4 style="text-decoration: underline">Terms & Conditions:</h4>
+    <ul>
+        <li>This invoice shall be treated as the Delivery Challan of the service described above.</li>
+        <li>Please contact us if you have any kind of queries, complaints or claims regarding this service. You may contact us via direct mail or phone at:
+            <p>E-mail: XXXXXXXXXXXXXXX</p>
+            <p>Tel: XXXXXXXXXXX</p>
+        </li>
+        <li>We/MyBL inventory shall not accept any type of claims or complaints regarding the service, if the customer fails to contact us within 5 (Five) working days from the invoice date. In that case, it will be assumed that the customer has successfully received and enjoyed the service as per his/her satisfaction.</li>
+    </ul>
 </body>
 </html>
